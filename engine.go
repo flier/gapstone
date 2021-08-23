@@ -10,12 +10,28 @@ try reading the *_test.go files.
 
 package gapstone
 
-// #cgo LDFLAGS: -lcapstone
-// #cgo freebsd CFLAGS: -I/usr/local/include
-// #cgo freebsd LDFLAGS: -L/usr/local/lib
-// #include <stdlib.h>
-// #include <capstone/capstone.h>
-// extern size_t trampoline(uint8_t *buffer, size_t buflen, size_t offset, void *user_data);
+/*
+#cgo CPPFLAGS: -DCAPSTONE_USE_SYS_DYN_MEM
+#cgo CPPFLAGS: -I${SRCDIR}/capstone/include
+#cgo CPPFLAGS: -DCAPSTONE_HAS_ARM
+#cgo CPPFLAGS: -DCAPSTONE_HAS_ARM64
+#cgo CPPFLAGS: -DCAPSTONE_HAS_EVM
+#cgo CPPFLAGS: -DCAPSTONE_HAS_M680X
+#cgo CPPFLAGS: -DCAPSTONE_HAS_M68K
+#cgo CPPFLAGS: -DCAPSTONE_HAS_MIPS
+#cgo CPPFLAGS: -DCAPSTONE_HAS_POWERPC
+#cgo CPPFLAGS: -DCAPSTONE_HAS_SPARC
+#cgo CPPFLAGS: -DCAPSTONE_HAS_SYSZ
+#cgo CPPFLAGS: -DCAPSTONE_HAS_TMS320C64X
+#cgo CPPFLAGS: -DCAPSTONE_HAS_X86
+#cgo CPPFLAGS: -DCAPSTONE_HAS_XCORE
+#cgo windows CPPFLAGS: -D__CRT__NO_INLINE
+
+#include <stdlib.h>
+#include <capstone/capstone.h>
+
+extern size_t trampoline(uint8_t *buffer, size_t buflen, size_t offset, void *user_data);
+*/
 import "C"
 
 import (
@@ -29,7 +45,7 @@ type Errno int
 func (e Errno) Error() string {
 	s := C.GoString(C.cs_strerror(C.cs_err(e)))
 	if s == "" {
-		return fmt.Sprintf("Internal Error: No Error string for Errno %v", e)
+		return fmt.Sprintf("Internal Error: No Error string for Errno %d", e)
 	}
 	return s
 }

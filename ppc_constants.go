@@ -8,22 +8,18 @@ try reading the *_test.go files.
     (c) 2013 COSEINC. All Rights Reserved.
 
     THIS FILE WAS AUTO-GENERATED -- DO NOT EDIT!
-	Command: ./genconst /Users/scottknight/work/capstone/bindings/python/capstone/
-	2019-02-02T13:26:27-05:00
+	Command: ./genconst capstone/bindings/python/capstone
+	2021-08-23T13:28:27+00:00
 
 */
 
 package gapstone
 
-// #cgo LDFLAGS: -lcapstone
-// #cgo freebsd CFLAGS: -I/usr/local/include
-// #cgo freebsd LDFLAGS: -L/usr/local/lib
 // #include <stdlib.h>
 // #include <capstone/capstone.h>
 import "C"
 
 // For Capstone Engine. AUTO-GENERATED FILE, DO NOT EDIT [ppc_const.py]
-// PPC branch codes for some branch instructions
 const (
 	PPC_BC_INVALID = C.PPC_BC_INVALID
 	PPC_BC_LT      = C.PPC_BC_LT
@@ -38,14 +34,12 @@ const (
 	PPC_BC_NS      = C.PPC_BC_NS
 )
 
-// PPC branch hint for some branch instructions
 const (
 	PPC_BH_INVALID = C.PPC_BH_INVALID
 	PPC_BH_PLUS    = C.PPC_BH_PLUS
 	PPC_BH_MINUS   = C.PPC_BH_MINUS
 )
 
-// Operand type for instruction's operands
 const (
 	PPC_OP_INVALID = C.PPC_OP_INVALID
 	PPC_OP_REG     = C.PPC_OP_REG
@@ -54,7 +48,6 @@ const (
 	PPC_OP_CRX     = C.PPC_OP_CRX
 )
 
-// PPC registers
 const (
 	PPC_REG_INVALID = C.PPC_REG_INVALID
 	PPC_REG_CARRY   = C.PPC_REG_CARRY
@@ -269,7 +262,6 @@ const (
 	PPC_REG_ENDING  = C.PPC_REG_ENDING
 )
 
-// PPC instruction
 const (
 	PPC_INS_INVALID       = C.PPC_INS_INVALID
 	PPC_INS_ADD           = C.PPC_INS_ADD
@@ -1384,18 +1376,9 @@ const (
 	PPC_INS_ENDING        = C.PPC_INS_ENDING
 )
 
-// Group of PPC instructions
 const (
-	PPC_GRP_INVALID = C.PPC_GRP_INVALID
-)
-
-// Generic groups
-const (
-	PPC_GRP_JUMP = C.PPC_GRP_JUMP
-)
-
-// Architecture-specific groups
-const (
+	PPC_GRP_INVALID   = C.PPC_GRP_INVALID
+	PPC_GRP_JUMP      = C.PPC_GRP_JUMP
 	PPC_GRP_ALTIVEC   = C.PPC_GRP_ALTIVEC
 	PPC_GRP_MODE32    = C.PPC_GRP_MODE32
 	PPC_GRP_MODE64    = C.PPC_GRP_MODE64

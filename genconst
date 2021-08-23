@@ -26,9 +26,6 @@ try reading the *_test.go files.
 
 package gapstone
 
-// #cgo LDFLAGS: -lcapstone
-// #cgo freebsd CFLAGS: -I/usr/local/include
-// #cgo freebsd LDFLAGS: -L/usr/local/lib
 // #include <stdlib.h>
 // #include <capstone/capstone.h>
 import "C"
@@ -70,7 +67,7 @@ pyfiles.each {|pyfn|
 		}
 
 		gofh.write(")\n\n") if @clumping
-		
+
 	}
 
 	# if all is well, this will nicely format all the files we just wrote. <3

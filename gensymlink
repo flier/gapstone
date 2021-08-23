@@ -1,0 +1,40 @@
+#!/usr/bin/env python
+
+import sys
+import os
+
+if len(sys.argv) < 2:
+    print("Usage: %s path/to/capstone" % sys.argv[0])
+    sys.exit(1)
+
+aliases = {
+    "AArch64": "arm64",
+    "SystemZ": "sysz",
+}
+
+rootDir = sys.argv[1]
+
+archDir = os.path.join(rootDir, "arch")
+arches = [aliases.get(d, d).lower() for d in os.listdir(archDir) if os.path.isdir(os.path.join(archDir, d))]
+
+for root, dirs, files in os.walk(archDir):
+    dir = os.path.split(root)[-1]
+    arch = aliases.get(dir, dir)
+
+    for file in files:
+        if file.endswith(".c"):
+            with open(file, "w") as f:
+                f.write('''#define CAPSTONE_HAS_%s 1
+
+#include "%s"''' % (arch.upper(), os.path.join(root, file)))
+
+for root, dirs, files in os.walk(rootDir, topdown=False):
+    with open("engine.c", "w") as f:
+        f.write("#define CAPSTONE_USE_SYS_DYN_MEM 1\n\n")
+
+        for arch in arches:
+            f.write("#define CAPSTONE_HAS_%s 1\n" % arch.upper())
+
+        for file in files:
+            if file.endswith(".c"):
+                f.write('\n#include "%s"' % os.path.join(root, file))

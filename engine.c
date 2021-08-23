@@ -1,0 +1,6 @@
+#include "capstone/cs.c"
+#include "capstone/SStream.c"
+#include "capstone/utils.c"
+#include "capstone/MCInstrDesc.c"
+#include "capstone/MCInst.c"
+#include "capstone/MCRegisterInfo.c"

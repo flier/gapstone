@@ -8,22 +8,18 @@ try reading the *_test.go files.
     (c) 2013 COSEINC. All Rights Reserved.
 
     THIS FILE WAS AUTO-GENERATED -- DO NOT EDIT!
-	Command: ./genconst /Users/scottknight/work/capstone/bindings/python/capstone/
-	2019-02-02T13:26:27-05:00
+	Command: ./genconst capstone/bindings/python/capstone
+	2021-08-23T13:28:27+00:00
 
 */
 
 package gapstone
 
-// #cgo LDFLAGS: -lcapstone
-// #cgo freebsd CFLAGS: -I/usr/local/include
-// #cgo freebsd LDFLAGS: -L/usr/local/lib
 // #include <stdlib.h>
 // #include <capstone/capstone.h>
 import "C"
 
 // For Capstone Engine. AUTO-GENERATED FILE, DO NOT EDIT [sysz_const.py]
-// Enums corresponding to SystemZ condition codes
 const (
 	SYSZ_CC_INVALID = C.SYSZ_CC_INVALID
 	SYSZ_CC_O       = C.SYSZ_CC_O
@@ -42,7 +38,6 @@ const (
 	SYSZ_CC_NO      = C.SYSZ_CC_NO
 )
 
-// Operand type for instruction's operands
 const (
 	SYSZ_OP_INVALID = C.SYSZ_OP_INVALID
 	SYSZ_OP_REG     = C.SYSZ_OP_REG
@@ -51,7 +46,6 @@ const (
 	SYSZ_OP_ACREG   = C.SYSZ_OP_ACREG
 )
 
-// SystemZ registers
 const (
 	SYSZ_REG_INVALID = C.SYSZ_REG_INVALID
 	SYSZ_REG_0       = C.SYSZ_REG_0
@@ -91,7 +85,6 @@ const (
 	SYSZ_REG_ENDING  = C.SYSZ_REG_ENDING
 )
 
-// SystemZ instruction
 const (
 	SYSZ_INS_INVALID  = C.SYSZ_INS_INVALID
 	SYSZ_INS_A        = C.SYSZ_INS_A
@@ -778,18 +771,9 @@ const (
 	SYSZ_INS_ENDING   = C.SYSZ_INS_ENDING
 )
 
-// Group of SystemZ instructions
 const (
-	SYSZ_GRP_INVALID = C.SYSZ_GRP_INVALID
-)
-
-// Generic groups
-const (
-	SYSZ_GRP_JUMP = C.SYSZ_GRP_JUMP
-)
-
-// Architecture-specific groups
-const (
+	SYSZ_GRP_INVALID            = C.SYSZ_GRP_INVALID
+	SYSZ_GRP_JUMP               = C.SYSZ_GRP_JUMP
 	SYSZ_GRP_DISTINCTOPS        = C.SYSZ_GRP_DISTINCTOPS
 	SYSZ_GRP_FPEXTENSION        = C.SYSZ_GRP_FPEXTENSION
 	SYSZ_GRP_HIGHWORD           = C.SYSZ_GRP_HIGHWORD
